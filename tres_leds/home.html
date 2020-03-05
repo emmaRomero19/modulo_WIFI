@@ -1,0 +1,98 @@
+<!DOCTYPE html >
+<html>
+<head>
+<title>Led Controlado por Wi-Fi</title>
+<script src="jquery.js"></script>
+</head>
+<body>
+<h4> <i> Direccion IP del ESP8266 </i> </h4>
+<div style="margin: 0; width:400px; height:30px;">
+<FORM NAME="form" ACTION="" METHOD="GET">
+ESP8266 IP:
+<INPUT TYPE="text" NAME="inputbox" VALUE="" />
+</FORM>
+</div>
+<h3> Click para encender el led! </h3>
+<input type="button" NAME="butname1" value="Encender LED" />
+<p name="p1">STATUS: El led esta apagado!</p>
+<h3> Click para encender el led! </h3>
+<input type="button" NAME="butname2" value="Encender LED" />
+<p name="p2">STATUS: El led esta apagado!</p>
+<h3> Click para encender el led! </h3>
+<input type="button" NAME="butname3" value="Encender LED" />
+<p name="p3">STATUS: El led esta apagado!</p>
+</body>
+<script>
+$.ajaxSetup({timeout:1000});
+btn1 = document.querySelector('input[name="butname1"]');
+btn2 = document.querySelector('input[name="butname2"]');
+btn3 = document.querySelector('input[name="butname3"]');
+txt1 = document.querySelector('p[name="p1"]');
+txt2 = document.querySelector('p[name="p2"]');
+txt3 = document.querySelector('p[name="p3"]');
+btn1.addEventListener('click', led1);
+btn2.addEventListener('click', led2);
+btn3.addEventListener('click', led3);
+
+function led1()
+{
+	var val1 = 'OFF';
+	if (btn1.value === 'Apagar LED') 
+	{
+	btn1.value = 'Encender LED';
+	val1 = 'OFF';
+	txt1.textContent = 'Estado: El led esta apagado!';
+	} 
+	else 
+	{
+    	btn1.value = 'Apagar LED';
+	val1 = 'ON';
+    	txt1.textContent = 'Estado: El Led esta Encendido!';
+	}
+	TextVar = form.inputbox.value;
+	ArduinoVar = "http://" + TextVar + ":80/";
+	$.get( ArduinoVar, {led: val1})	;
+	{Connection: close};
+}
+function led2()
+{
+	var val2 = 'OFF';
+	if (btn2.value === 'Apagar LED') 
+	{
+	btn2.value = 'Encender LED';
+	val2 = 'OFF';
+	txt2.textContent = 'Estado: El led esta apagado!';
+	} 
+	else 
+	{
+    	btn2.value = 'Apagar LED';
+	val2 = 'ON2';
+    	txt2.textContent = 'Estado: El Led esta Encendido!';
+	}
+	TextVar = form.inputbox.value;
+	ArduinoVar = "http://" + TextVar + ":80/";
+	$.get( ArduinoVar, {led: val2})	;
+	{Connection: close};
+}
+function led3()
+{
+	var val3 = 'OFF';
+	if (btn3.value === 'Apagar LED') 
+	{
+	btn3.value = 'Encender LED';
+	val3 = 'OFF';
+	txt3.textContent = 'Estado: El led esta apagado!';
+	} 
+	else 
+	{
+    	btn3.value = 'Apagar LED';
+	val3 = 'ON3';
+    	txt3.textContent = 'Estado: El Led esta Encendido!';
+	}
+	TextVar = form.inputbox.value;
+	ArduinoVar = "http://" + TextVar + ":80/";
+	$.get( ArduinoVar, {led: val3})	;
+	{Connection: close};
+}
+</script>
+</html>
