@@ -1,0 +1,215 @@
+<!DOCTYPE html >
+<html>
+<head>
+<title>Led Controlado por Wi-Fi</title>
+<style>
+	.button{
+		padding: 15px 10px;
+		border-radius: 10px;
+		border: transparent;
+		font-weight: bold;
+		font-style: italic;
+		width: 180px;
+		color:white;
+	}
+	div.led{
+		display: flex;
+		margin-top: 15px;
+	}
+	div.led>p{
+		margin-left: 45px;
+	}
+</style>
+<script src="jquery.js"></script>
+</head>
+<body>
+<h2> <i>ESP8266 IP ADDRESS: </i> </h2>
+<div style="margin: 0; width:400px; height:30px;">
+<FORM NAME="form" ACTION="" METHOD="GET">
+ESP8266 IP:
+<INPUT TYPE="text" NAME="inputbox" VALUE="" />
+</FORM>
+</div>
+
+<h3> CLICK TO TURN ON: </h3>
+
+<div class="led">
+	<input class="button" type="button" NAME="butname1" value="RED LED" style="background-color: red;"/>
+	<p name="p1">Status: Red Led is off!</p>
+</div>
+
+<div class="led">
+	<input class="button" type="button" NAME="butname2" value="GREEN LED" style="background-color: green; "/>
+	<p name="p2">Status: Green Led is off!</p>
+</div>
+
+<div class="led">
+	<input class="button" type="button" NAME="butname3" value="BLUE LED" style="background-color: BLUE; "/>
+	<p name="p3">Status: Blue Led is off!</p>
+</div>
+
+<div class="led">
+	<input class="button" type="button" NAME="butname4" value="YELLOW LED" style="background-color: yellow; color: black;"/>
+	<p name="p4">Status: Yellow Led is off!</p>
+</div>
+
+<div class="led">
+	<input class="button" type="button" NAME="butname5" value="PURPLE LED" style="background-color: purple; "/>
+	<p name="p5">Status: Purple Led is off!</p>
+</div>
+
+<div class="led">
+	<input class="button" type="button" NAME="butname6" value="PINK LED" style="background-color: palevioletred; "/>
+	<p name="p6">Status: Pink Led is off!</p>
+</div>
+
+
+</body>
+<script>
+$.ajaxSetup({timeout:1000});
+btn1 = document.querySelector('input[name="butname1"]');
+btn2 = document.querySelector('input[name="butname2"]');
+btn3 = document.querySelector('input[name="butname3"]');
+btn4 = document.querySelector('input[name="butname4"]');
+btn5 = document.querySelector('input[name="butname5"]');
+btn6 = document.querySelector('input[name="butname6"]');
+txt1 = document.querySelector('p[name="p1"]');
+txt2 = document.querySelector('p[name="p2"]');
+txt3 = document.querySelector('p[name="p3"]');
+txt4 = document.querySelector('p[name="p4"]');
+txt5 = document.querySelector('p[name="p5"]');
+txt6 = document.querySelector('p[name="p6"]');
+btn1.addEventListener('click', led1);
+btn2.addEventListener('click', led2);
+btn3.addEventListener('click', led3);
+btn4.addEventListener('click', led4);
+btn5.addEventListener('click', led5);
+btn6.addEventListener('click', led6);
+
+function led1()
+{
+	var val1 = 'OFF';
+	if (btn1.value === 'TURN OFF RED LED') 
+	{
+	btn1.value = 'RED LED';
+	val1 = 'OFF';
+	txt1.textContent = 'Status: Red Led is off!';
+	} 
+	else 
+	{
+    	btn1.value = 'TURN OFF RED LED';
+	val1 = 'ON';
+    	txt1.textContent = 'Status: Red Led is on!';
+	}
+	TextVar = form.inputbox.value;
+	ArduinoVar = "http://" + TextVar + ":80/";
+	$.get( ArduinoVar, {led: val1})	;
+	{Connection: close};
+}
+
+function led2()
+{
+	var val2 = 'OFF2';
+	if (btn2.value === 'TURN OFF GREEN LED') 
+	{
+	btn2.value = 'GREEN LED';
+	val2 = 'OFF2';
+	txt2.textContent = 'Status: Green Led is off!';
+	} 
+	else 
+	{
+    	btn2.value = 'TURN OFF GREEN LED';
+	val2 = 'ON2';
+    	txt2.textContent = 'Status: Green Led is on!';
+	}
+	TextVar = form.inputbox.value;
+	ArduinoVar = "http://" + TextVar + ":80/";
+	$.get( ArduinoVar, {led: val2})	;
+	{Connection: close};
+}
+
+function led3()
+{
+	var val3 = 'OFF3';
+	if (btn3.value === 'TURN OFF BLUE LED') 
+	{
+	btn3.value = 'BLUE LED';
+	val3 = 'OFF3';
+	txt3.textContent = 'Status: Blue Led is off!';
+	} 
+	else 
+	{
+    	btn3.value = 'TURN OFF BLUE LED';
+	val3 = 'ON3';
+    	txt3.textContent = 'Status: Blue Led is on!';
+	}
+	TextVar = form.inputbox.value;
+	ArduinoVar = "http://" + TextVar + ":80/";
+	$.get( ArduinoVar, {led: val3})	;
+	{Connection: close};
+}
+
+function led4()
+{
+	var val4 = 'OFF4';
+	if (btn4.value === 'TURN OFF YELLOW LED') 
+	{
+	btn4.value = 'YELLOW LED';
+	val4 = 'OFF4';
+	txt4.textContent = 'Status: Yellow Led is off!';
+	} 
+	else 
+	{
+    	btn4.value = 'TURN OFF YELLOW LED';
+	val4 = 'ON4';
+    	txt4.textContent = 'Status: Yellow Led is on!';
+	}
+	TextVar = form.inputbox.value;
+	ArduinoVar = "http://" + TextVar + ":80/";
+	$.get( ArduinoVar, {led: val4})	;
+	{Connection: close};
+}
+
+function led5()
+{
+	var val5 = 'OFF5';
+	if (btn5.value === 'TURN OFF PURPLE LED') 
+	{
+	btn5.value = 'PRUPLE LED';
+	val5 = 'OFF5';
+	txt5.textContent = 'Status: Purple Led is off!';
+	} 
+	else 
+	{
+    	btn5.value = 'TURN OFF PURPLE LED';
+	val5 = 'ON5';
+    	txt5.textContent = 'Status: Purple Led is on!';
+	}
+	TextVar = form.inputbox.value;
+	ArduinoVar = "http://" + TextVar + ":80/";
+	$.get( ArduinoVar, {led: val5})	;
+	{Connection: close};
+}
+
+function led6()
+{
+	var val6 = 'OFF6';
+	if (btn6.value === 'TURN OFF PINK LED') 
+	{
+	btn6.value = 'PINK LED';
+	val6 = 'OFF6';
+	txt6.textContent = 'Status: Pink Led is off!';
+	} 
+	else 
+	{
+    	btn6.value = 'TURN OFF PINK LED';
+	val6 = 'ON6';
+    	txt6.textContent = 'Status: Pink Led is on!';
+	}
+	TextVar = form.inputbox.value;
+	ArduinoVar = "http://" + TextVar + ":80/";
+	$.get( ArduinoVar, {led: val6})	;
+	{Connection: close};
+}
+</script>
+</html>
