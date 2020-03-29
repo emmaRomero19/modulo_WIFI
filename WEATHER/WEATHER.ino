@@ -10,13 +10,13 @@ const char* password = "Ha656072";
 const String host =
 
 //SOLEADO
-"http://api.openweathermap.org/data/2.5/weather?q=Tulancingo,%20MX&units=metric&APPID=";
+//"http://api.openweathermap.org/data/2.5/weather?q=Guadalajara,%20MX&units=metric&APPID=";
 
 //NUBLADO
-//"http://api.openweathermap.org/data/2.5/weather?q=Paris,%20FR&units=metric&APPID=";
+//"http://api.openweathermap.org/data/2.5/weather?q=Tulancingo,%20MX&units=metric&APPID=";
 
 //MAS DE 25°
-//"http://api.openweathermap.org/data/2.5/weather?q=Jakarta,%20ID&units=metric&APPID=";
+"http://api.openweathermap.org/data/2.5/weather?q=Paris,%20FR&units=metric&APPID=";
 
 //API KEY
 const String privateKey = "2a10a4c48fe1391efd05288b22e81c01";
@@ -90,7 +90,8 @@ Serial.println("ID del clima"+String(weather_0_id));
 JsonObject& main = root["main"];
 float main_temp = main["temp"]; // 281.87
 Serial.println("Weather "+String(main_temp));
-
+String city = root["name"];
+Serial.println(city);
 if(main_temp>=25.0){
   //SI ES MAYOR A 25° ENCIENDE LED ROJO
   digitalWrite(5,HIGH);
